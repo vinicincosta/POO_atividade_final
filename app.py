@@ -1,10 +1,10 @@
 class Curso:
-    def __init__(self, nome_curso, materias, quant_aulas, quant_alunos, mensalidades=0):
+    def __init__(self, nome_curso, materias, quant_aulas, quant_alunos):
         self._nome_curso = nome_curso # protegido
         self._materias = materias  # protegido
         self.__quant_aulas = int(quant_aulas)  # privado
         self.__quant_alunos = int(quant_alunos)  # privado
-        self.__mensalidades = mensalidades   # privado
+
 
     # visibilidade privada (__) ou protegida (_).
 
@@ -21,8 +21,7 @@ class Curso:
     def get_quant_alunos(self):
         return self.__quant_alunos
 
-    def get_mensalidades(self):
-        return self.__mensalidades
+
 
     # Métodos SET
     def set_quant_aulas(self, valor):
@@ -37,11 +36,7 @@ class Curso:
         else:
             print('Quantidade de alunos inválida.')
 
-    def set_mensalidades(self, valor):
-        if valor >= 0:
-            self.__mensalidades = valor
-        else:
-            print('Mensalidade inválida.')
+
 
     # GET voce recebe informação, SET é para mandar informação
 
@@ -59,9 +54,9 @@ class Curso:
             print(
                 f'O curso está começando a receber mensalidades. Atualmente, temos {self.get_quant_alunos()} alunos pagantes.')
         elif 10 < self.__quant_alunos <= 50:
-            print(f'O curso está bastante popular! Atualmente, temos {self.get_quant_alunos()} mensalidades.')
+            print(f'O curso está bastante popular! Atualmente, temos {self.get_quant_alunos()} alunos pagantes.')
         else:
-            print(f'O curso está muito popular! Número de mensalidades: {self.get_quant_alunos()}')
+            print(f'O curso está muito popular! Temos {self.get_quant_alunos()} alunos pagantes.')
 
     def matriculas(self):
         if self.__quant_alunos == 0:
@@ -75,9 +70,10 @@ class Curso:
 
 
 class Professor(Curso):
-    def __init__(self, nome_curso, materias, quant_aulas, quant_alunos, mensalidades=0):
-        super().__init__(nome_curso, materias, quant_aulas, quant_alunos, mensalidades)
+    def __init__(self, nome_curso, materias, quant_aulas, quant_alunos):
+        super().__init__(nome_curso, materias, quant_aulas, quant_alunos)
         self._salario = 0
+
 
     def get_salario(self):
         return self._salario
